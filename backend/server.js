@@ -17,8 +17,8 @@ const app = express();
 
 // ✅ Allowed origins
 const allowedOrigins = [
-  "https://e-com-website-4.onrender.com/",
-  "https://e-com-website-5.onrender.com/",
+  "https://e-com-website-4.onrender.com",
+  "https://e-com-website-5.onrender.com",
   "https://myfrontend.com"
 ];
 
