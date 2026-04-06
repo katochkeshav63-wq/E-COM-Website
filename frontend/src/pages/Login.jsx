@@ -42,7 +42,7 @@ export default function Login() {
       setTimeout(() => {
         if (res.data.user.role === "admin") {
         
-          window.location.href = "http://localhost:5173";
+          window.location.href = "https://e-com-website-4.onrender.com/";
         } else {
           navigate("/");
         }

@@ -84,7 +84,7 @@ export default function Dashboard() {
    
     localStorage.clear();
  
-    window.location.href = "http://localhost:5174/";
+    window.location.href = "https://e-com-website-5.onrender.com/";
   };
 
   const filteredOrders = orders
