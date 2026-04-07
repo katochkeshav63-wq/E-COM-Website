@@ -132,10 +132,10 @@ const addToCart = async () => {
           </div>
 
           <div className="flex gap-4 mt-6 overflow-x-auto pb-2">
-            {imageURL.product.images.map((img, index) => (
+            {product.images.map((img, index) => (
               <img
                 key={index}
-                src={img}
+                src={`${imageURL}${img}`}
                 onClick={() => setActiveImage(index)}
                 className={`h-20 w-20 object-cover rounded-xl cursor-pointer border-2 transition ${
                   activeImage === index
