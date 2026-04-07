@@ -6,7 +6,7 @@ export const createProduct = async (req, res) => {
   try {
     // get uploaded files
     const imageUrls = req.files.map(
-      (file) => `https://e-com-website-3.onrender.com/uploads/${file.filename}`
+      (file) => `/uploads/${file.filename}`
     );
 
     // merge body + images
@@ -84,7 +84,7 @@ export const updateProduct = async (req, res) => {
     // if new images uploaded
     if (req.files && req.files.length > 0) {
       const imageUrls = req.files.map(
-        (file) => `https://e-com-website-3.onrender.com/uploads/${file.filename}`
+        (file) => `/uploads/${file.filename}`
       );
       updateData.images = imageUrls;
     }

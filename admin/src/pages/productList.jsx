@@ -2,12 +2,16 @@ import { useEffect, useState } from "react";
 import api from "../api/axios";
 import { Link } from "react-router";
 
+const imageURL = import.meta.env.VITE_IMAGE_URL;
+
 export default function ProductList() {
   const [products, setProducts] = useState([]);
   const loadProducts = async () => {
     const response = await api.get("/products");
     setProducts(response.data);
   };
+
+  console.log(imageURL);
   const deleteProduct = async (id) => {
     try {
       await api.delete(`/products/delete/${id}`);
@@ -48,7 +52,7 @@ export default function ProductList() {
               
               <td className="px-4 py-2">
                 <img
-                  src={product?.images?.[0] || ""}
+                  src={`${imageURL}${product?.images?.[0]}` || ""}
                   className="w-14 h-14 object-cover rounded"
                 />
               </td>
