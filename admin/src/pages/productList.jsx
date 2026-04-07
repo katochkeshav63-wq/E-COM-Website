@@ -11,7 +11,7 @@ export default function ProductList() {
     setProducts(response.data);
   };
 
-  console.log(imageURL);
+  // console.log(imageURL);
   const deleteProduct = async (id) => {
     try {
       await api.delete(`/products/delete/${id}`);
