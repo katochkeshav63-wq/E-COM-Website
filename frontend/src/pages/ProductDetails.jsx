@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
+
 export default function ProductDetails() {
   const { id } = useParams();
-
+const navigate = useNavigate()
   const [product, setProduct] = useState(null);
   const [activeImage, setActiveImage] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
@@ -49,6 +50,7 @@ const addToCart = async () => {
 
   if (!userId) {
     toast.error("Please login first ❌");
+    navigate("/signup")
     return;
   }
 
