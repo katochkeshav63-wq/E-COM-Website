@@ -132,7 +132,7 @@ const addToCart = async () => {
           </div>
 
           <div className="flex gap-4 mt-6 overflow-x-auto pb-2">
-            {product.images.map((img, index) => (
+            {imageURL.product.images.map((img, index) => (
               <img
                 key={index}
                 src={img}
