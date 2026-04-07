@@ -16,30 +16,30 @@ dotenv.config();
 const app = express();
 
 // ✅ Allowed origins
-const allowedOrigins = [
-  "https://e-com-website-4.onrender.com",
-  "https://e-com-website-5.onrender.com",
-  "https://myfrontend.com"
-];
+// const allowedOrigins = [
+//   "https://e-com-website-4.onrender.com",
+//   "https://e-com-website-5.onrender.com",
+//   "https://myfrontend.com"
+// ];
 
 // ✅ CORS FIRST (very important)
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin) return callback(null, true);
 
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
-
+//       if (allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true,
+//   })
+// );
+app.use(cors())
 // ✅ Handle preflight requests
 // app.options("*", cors());
 
