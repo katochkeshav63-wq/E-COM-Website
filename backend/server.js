@@ -47,7 +47,7 @@ app.use(cors())
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 // ✅ Routes (AFTER CORS)
-app.use("/api", statsRoutes);
+app.use("/", statsRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
