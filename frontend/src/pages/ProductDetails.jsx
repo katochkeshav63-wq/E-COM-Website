@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api/axios";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
-const imageURL = import.meta.env.VITE_IMAGE_URL;
+
 export default function ProductDetails() {
   const { id } = useParams();
 const navigate = useNavigate()
@@ -125,7 +125,7 @@ const addToCart = async () => {
           
           <div className="bg-gray-50 rounded-2xl p-8 flex justify-center items-center">
             <img
-              src={`${imageURL}${product.images[activeImage]}`}
+              src={product.images[activeImage]}
               className="h-60 object-contain transition duration-300 hover:scale-105"
               alt={product.title}
             />
@@ -135,7 +135,7 @@ const addToCart = async () => {
             {product.images.map((img, index) => (
               <img
                 key={index}
-                src={`${imageURL}${img}`}
+                src={img}
                 onClick={() => setActiveImage(index)}
                 className={`h-20 w-20 object-cover rounded-xl cursor-pointer border-2 transition ${
                   activeImage === index

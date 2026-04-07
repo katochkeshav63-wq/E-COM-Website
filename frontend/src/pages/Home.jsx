@@ -6,7 +6,7 @@ import banner1 from "../assets/banner/mgcrr9hcmyqcxvhko4ba.webp";
 import banner2 from "../assets/banner/5c3dcbfe70.webp";
 // import banner3 from "../assets/banner/5c3dcbfe70.webp";
 import banner4 from "../assets/banner/wjy3tmsx9hyoqlwpfumc.webp"
-const imageURL = import.meta.env.VITE_IMAGE_URL;
+
 export default function Home() {
   const [Products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -194,7 +194,7 @@ useEffect(() => {
                   <div className="transition duration-300 hover:scale-105">
                     <div className="bg-white rounded-lg overflow-hidden">
                       <img
-                        src={`${imageURL}${product.images?.[0]}`}
+                        src={product.images?.[0]|| ""}
                         alt={product.title}
                         className="w-full h-70 object-cover group-hover:scale-105 transition"
                       />

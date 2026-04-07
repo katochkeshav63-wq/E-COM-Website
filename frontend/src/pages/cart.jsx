@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../api/axios";
 import { useNavigate } from "react-router";
-const imageURL = import.meta.env.VITE_IMAGE_URL;
+
 
 export default function Cart() {
  const user = JSON.parse(localStorage.getItem("user"));
@@ -66,7 +66,7 @@ return (
             {/* LEFT */}
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <img
-                src={`${imageURL}${item.productId.images?.[0]}`}
+                src={item.productId.images?.[0]}
                 alt={item.productId.title}
                 className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded"
               />
