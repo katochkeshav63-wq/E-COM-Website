@@ -45,7 +45,7 @@ app.use(cors())
 
 // Middlewares
 app.use(express.json());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use("/uploads", express.static("uploads"));
 // ✅ Routes (AFTER CORS)
 app.use("/api", statsRoutes);
 app.use("/dashboard", dashboardRoutes);
