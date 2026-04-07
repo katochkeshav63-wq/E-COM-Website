@@ -10,6 +10,7 @@ import orderRoutes from "./routes/orderRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import statsRoutes from "./routes/statsRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
+import path from "path";
 
 dotenv.config();
 
@@ -45,7 +46,7 @@ app.use(cors())
 
 // Middlewares
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static(path.join("uploads")));
 // ✅ Routes (AFTER CORS)
 app.use("/api", statsRoutes);
 app.use("/dashboard", dashboardRoutes);
