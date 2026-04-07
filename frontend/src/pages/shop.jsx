@@ -3,6 +3,7 @@ import api from "../api/axios";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router";
 import banner1 from  "../assets/banner/kvbddf0kls0jujteer2j.webp"
+const imageURL = import.meta.env.VITE_IMAGE_URL;
 
 export default function ShopPage() {
   const [products, setProducts] = useState([]);
@@ -189,7 +190,7 @@ const heroImg =banner1;
                   >
                     <div className="overflow-hidden">
                       <img
-                        src={product.images?.[0] || "https://via.placeholder.com/400"}
+                        src={`${imageURL}${product.images?.[0] || "https://via.placeholder.com/400"}`}
                         alt={product.title}
                         className="w-full h-64 object-cover group-hover:scale-110 transition duration-500"
                       />

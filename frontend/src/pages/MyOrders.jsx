@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
 import { Link } from "react-router";
+const imageURL = import.meta.env.VITE_IMAGE_URL;
 
 export default function MyOrders() {
   const [orders, setOrders] = useState([]);
@@ -85,7 +86,7 @@ export default function MyOrders() {
                     <div className="flex items-center space-x-3">
                       {item.productId?.images?.[0] && (
                         <img
-                          src={item.productId.images[0]}
+                          src={`${imageURL}${item.productId.images[0]}`}
                           alt={item.productId.title}
                           className="w-12 h-12 object-cover rounded"
                         />
