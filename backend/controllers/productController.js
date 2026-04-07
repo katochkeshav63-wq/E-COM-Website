@@ -6,7 +6,7 @@ export const createProduct = async (req, res) => {
   try {
     // get uploaded files
     const imageUrls = req.files.map(
-      (file) => `http://localhost:5000/uploads/${file.filename}`
+      (file) => `https://e-com-website-3.onrender.com/uploads/${file.filename}`
     );
 
     // merge body + images
