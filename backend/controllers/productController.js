@@ -1,15 +1,11 @@
 import Product from "../models/Product.js";
-
-// add product
-
 export const createProduct = async (req, res) => {
   try {
-    // get uploaded files
+    
     const imageUrls = req.files.map(
-      (file) => `/uploads/${file.filename}`
+      (file) => file.path
     );
 
-    // merge body + images
     const productData = {
       ...req.body,
       images: imageUrls,
@@ -81,11 +77,12 @@ export const updateProduct = async (req, res) => {
   try {
     let updateData = { ...req.body };
 
-    // if new images uploaded
+    // ✅ if new images uploaded
     if (req.files && req.files.length > 0) {
       const imageUrls = req.files.map(
-        (file) => `/uploads/${file.filename}`
+        (file) => file.path
       );
+
       updateData.images = imageUrls;
     }
 

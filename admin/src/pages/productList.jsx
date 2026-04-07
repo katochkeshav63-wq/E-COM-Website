@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import api from "../api/axios";
 import { Link } from "react-router";
 
-const imageURL = import.meta.env.VITE_IMAGE_URL;
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -52,7 +51,7 @@ export default function ProductList() {
               
               <td className="px-4 py-2">
                 <img
-                  src={`${imageURL}${product?.images?.[0]}` || ""}
+                  src={product?.images?.[0] || ""}
                   className="w-14 h-14 object-cover rounded"
                 />
               </td>
