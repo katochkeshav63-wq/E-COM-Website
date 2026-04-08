@@ -7,28 +7,23 @@ import Sidebar from "./components/sidebar";
 import { DataProvider } from "./contexts/DataContext";
 import AdminOrders from "./pages/order";
 import CategoryPage from "./pages/CategoryPage";
-
+import AdminRoute from "./components/AdminRoute";
 
 function Layout() {
   return (
-    <DataProvider>
-      <Sidebar />
-      <Outlet />
-    </DataProvider>
+    <AdminRoute>
+      <DataProvider>
+        <Sidebar />
+        <Outlet />
+      </DataProvider>
+    </AdminRoute>
   );
 }
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      
-        <DataProvider>
-          <Sidebar />
-          <Outlet />
-        </DataProvider>
-     
-    ),
+    element: <Layout />, // ✅ protected here
     children: [
       { path: "/", element: <Dashboard /> },
       { path: "/admin/products", element: <ProductList /> },
@@ -39,6 +34,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 export default function App() {
   return <RouterProvider router={router} />;
 }
