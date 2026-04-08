@@ -16,10 +16,12 @@ import Contact from "./pages/contact";
 import ShopPage from "./pages/shop";
 import MyOrders from "./pages/MyOrders"
 import TrackOrderTimeline from "./pages/trackOrder";
+import ScrollToTop from "./components/scrollup";
 
 function Layout() {
   return (
     <>
+    <ScrollToTop />
       <ToastContainer />
       <Navbar />
       <Outlet />
@@ -50,5 +52,5 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return  <RouterProvider router={router} />;
 }
