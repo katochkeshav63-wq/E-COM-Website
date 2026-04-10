@@ -24,7 +24,7 @@ export default function Sidebar() {
 
         <ul className="space-y-4">
           <li>
-            <Link to="/" className="block hover:text-gray-300">
+            <Link to="/admin/dashboard" className="block hover:text-gray-300">
               Dashboard
             </Link>
           </li>

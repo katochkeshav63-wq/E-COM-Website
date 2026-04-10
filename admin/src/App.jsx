@@ -8,6 +8,7 @@ import { DataProvider } from "./contexts/DataContext";
 import AdminOrders from "./pages/order";
 import CategoryPage from "./pages/CategoryPage";
 import AdminRoute from "./components/AdminRoute";
+import Login from "./pages/login";
 
 function Layout() {
   return (
@@ -21,16 +22,23 @@ function Layout() {
 }
 
 const router = createBrowserRouter([
+  // ✅ Public Route (NO AdminRoute here)
   {
     path: "/",
-    element: <Layout />, // ✅ protected here
+    element: <Login />,
+  },
+
+  // ✅ Protected Routes
+  {
+    path: "/admin",
+    element: <Layout />,
     children: [
-      { path: "/", element: <Dashboard /> },
-      { path: "/admin/products", element: <ProductList /> },
-      { path: "/admin/orders", element: <AdminOrders /> },
-      { path: "/admin/products/add", element: <AddProduct /> },
-      { path: "/admin/products/update/:id", element: <EditProduct /> },
-      { path: "/admin/categories", element: <CategoryPage /> },
+      { path: "dashboard", element: <Dashboard /> },
+      { path: "products", element: <ProductList /> },
+      { path: "orders", element: <AdminOrders /> },
+      { path: "products/add", element: <AddProduct /> },
+      { path: "products/update/:id", element: <EditProduct /> },
+      { path: "categories", element: <CategoryPage /> },
     ],
   },
 ]);
