@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import api from "../api/axios";
 import { useNavigate } from "react-router";
-
+import emptyCart from "../assets/banner/empty-cart.png"
 
 export default function Cart() {
  const user = JSON.parse(localStorage.getItem("user"));
 const userId = user?.id;
   const [cart, setCart] = useState(null);
   const navigate = useNavigate();
+  const emptyCard = emptyCart
 
   //Load cart data
   const loadCart = async () => {
@@ -39,7 +40,9 @@ const userId = user?.id;
   };
 
   if (!cart) {
-    return <div>Loading...</div>;
+    return
+ 
+   
   }
 
   const total = cart.items.reduce(
@@ -50,12 +53,34 @@ const userId = user?.id;
 return (
   <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
     <h1 className="text-xl sm:text-2xl font-bold mb-6">Your Cart</h1>
+{cart.items.length === 0 ? (
+  <div className="flex flex-col items-center justify-center py-16 text-center">
+    
+    <img
+      src={emptyCard}
+      alt="Empty Cart"
+      className="w-48 h-48 object-contain mb-6 opacity-80"
+    />
 
-    {cart.items.length === 0 ? (
-      <div className="text-center text-gray-500 py-10">
-        Your cart is empty 🛒
-      </div>
-    ) : (
+    <h2 className="text-xl font-semibold text-gray-700 mb-2">
+      Your Cart is Empty
+    </h2>
+
+    <p className="text-gray-500 mb-6">
+      Looks like you haven't added anything yet.
+    </p>
+
+    <button
+      className="px-6 cursor-pointer py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
+      onClick={() => navigate("/")}
+    >
+      Continue Shopping
+    </button>
+
+  </div>
+) : 
+  // your cart items UI
+(
       <div className="space-y-4">
 
         {cart.items.map((item) => (

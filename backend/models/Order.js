@@ -49,7 +49,7 @@ const orderSchema = new mongoose.Schema(
       default: "placed",
     },
 
-    // 🔥 TRACKING HISTORY (IMPORTANT)
+  
     trackingHistory: [
       {
         status: String,
@@ -57,7 +57,7 @@ const orderSchema = new mongoose.Schema(
       },
     ],
 
-    // 🔥 OPTIONAL (PRO FEATURE)
+  
     trackingId: String,
     courier: String,
 
