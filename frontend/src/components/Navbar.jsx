@@ -97,7 +97,7 @@ export default function Navbar() {
         {/* LOGO */}
         <div className="absolute left-1/2 -translate-x-1/2">
           <Link to="/" className="text-xl sm:text-2xl font-bold">
-            KATOCH
+            BAGIFY
           </Link>
         </div>
 

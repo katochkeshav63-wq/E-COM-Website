@@ -11,7 +11,7 @@ export default function Footer() {
         {/* 🔹 BRAND */}
         <div>
           <h2 className="text-3xl font-bold tracking-widest mb-4">
-            KATOCH
+            BAGIFY
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
             Premium lifestyle products crafted for everyday use. 
