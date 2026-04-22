@@ -88,66 +88,136 @@ export default function Checkout() {
       console.error(err);
     }
   };
+return (
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <h1 className="text-2xl sm:text-3xl font-semibold mb-10">
+      Checkout
+    </h1>
 
-  return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Checkout</h1>
+    <div className="grid lg:grid-cols-3 gap-10">
 
-      {/* HEADER */}
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="font-semibold">Select Delivery Address</h2>
+      {/* 📦 LEFT: ADDRESS */}
+      <div className="lg:col-span-2">
+
+        {/* HEADER */}
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-semibold">
+            Delivery Address
+          </h2>
+
+          <button
+            onClick={() => navigate("/checkout-address")}
+            className="bg-black text-white px-4 py-2 rounded-full text-sm hover:bg-gray-800 cursor-pointer"
+          >
+            + Add New
+          </button>
+        </div>
+
+        {/* ADDRESS LIST */}
+        <div className="space-y-4">
+          {addresses.map((addr) => (
+            <div
+              key={addr._id}
+              className={`p-5 rounded-xl border cursor-pointer transition ${
+                selectedAddress?._id === addr._id
+                  ? "border-black bg-gray-50"
+                  : "bg-white hover:shadow"
+              }`}
+              onClick={() => setSelectedAddress(addr)}
+            >
+              <div className="flex justify-between items-start">
+
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <input
+                      type="radio"
+                      checked={selectedAddress?._id === addr._id}
+                      onChange={() => setSelectedAddress(addr)}
+                    />
+                    <h3 className="font-semibold">
+                      {addr.fullName}
+                    </h3>
+                  </div>
+
+                  <p className="text-sm text-gray-600">
+                    {addr.addressLine}, {addr.city}, {addr.state} -{" "}
+                    {addr.pincode}
+                  </p>
+
+                  <p className="text-sm text-gray-500 mt-1">
+                    📞 {addr.phone}
+                  </p>
+                </div>
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteAddress(addr._id);
+                  }}
+                  className="text-red-500 text-sm hover:underline cursor-pointer"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 💰 RIGHT: SUMMARY */}
+      <div className="bg-white rounded-xl shadow-sm p-6 h-fit sticky top-24">
+
+        <h2 className="text-xl font-semibold mb-6">
+          Order Summary
+        </h2>
+
+        <div className="space-y-4 text-sm">
+
+          {cart.items.map((item) => (
+            <div
+              key={item.productId._id}
+              className="flex justify-between text-gray-600"
+            >
+              <span className="line-clamp-1">
+                {item.productId.title} × {item.quantity}
+              </span>
+
+              <span>
+                ₹
+                {(item.productId.price * item.quantity).toFixed(2)}
+              </span>
+            </div>
+          ))}
+
+          <div className="border-t pt-4 flex justify-between font-medium">
+            <span>Subtotal</span>
+            <span>₹{total.toFixed(2)}</span>
+          </div>
+
+          <div className="flex justify-between text-green-600">
+            <span>Shipping</span>
+            <span>Free</span>
+          </div>
+
+          <div className="border-t pt-4 flex justify-between text-lg font-semibold">
+            <span>Total</span>
+            <span>₹{total.toFixed(2)}</span>
+          </div>
+        </div>
 
         <button
-          onClick={() => navigate("/checkout-address")}
-          className="bg-blue-500 text-white px-4 py-1 rounded"
+          onClick={placeOrder}
+          className="w-full mt-6 bg-black hover:bg-gray-800 text-white py-3 rounded-full transition cursor-pointer"
         >
-          + Add Address
+          Place Order (Cash on Delivery)
         </button>
+
+        <p className="text-xs text-gray-400 mt-3 text-center ">
+          Safe & secure checkout
+        </p>
       </div>
 
-      {/* ADDRESS LIST */}
-      <div className="space-y-3">
-        {addresses.map((addr) => (
-          <div
-            key={addr._id}
-            className="border p-3 rounded flex justify-between items-start"
-          >
-            <label className="cursor-pointer w-full">
-              <input
-                type="radio"
-                name="address"
-                checked={selectedAddress?._id === addr._id}
-                onChange={() => setSelectedAddress(addr)}
-                className="mr-2"
-              />
-
-              <strong>{addr.fullName}</strong>
-              <p className="text-sm">
-                {addr.addressLine}, {addr.city}, {addr.state} - {addr.pincode}
-              </p>
-              <p className="text-sm">📞 {addr.phone}</p>
-            </label>
-
-            <button
-              onClick={() => deleteAddress(addr._id)}
-              className="text-red-500 text-sm ml-2"
-            >
-              Delete
-            </button>
-          </div>
-        ))}
-      </div>
-
-      {/* ORDER SUMMARY */}
-      <h2 className="font-semibold mt-6 mb-2">Order Summary</h2>
-      <p className="text-lg font-bold">Total: ₹{total}</p>
-
-      <button
-        onClick={placeOrder}
-        className="mt-6 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
-      >
-        Place Order (COD)
-      </button>
     </div>
-  );
+  </div>
+);
 }
