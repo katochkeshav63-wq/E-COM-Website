@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllStats } from "../services/statsService";
 import { getRecentOrders } from "../services/orderServices";
 import { useData } from "../hooks/useData";
+import { useNavigate } from "react-router";
 import {
   LineChart,
   Line,
@@ -50,6 +51,8 @@ export default function Dashboard() {
     loading
   } = useData();
 
+const navigate = useNavigate()
+
   const revenueChart =
   monthlyRevenue?.map((item) => ({
     day: item._id,
@@ -84,7 +87,7 @@ export default function Dashboard() {
    
     localStorage.clear();
  
-    window.location.href = "https://e-com-website-5.onrender.com/";
+   navigate("/")
   };
 
   const filteredOrders = orders
