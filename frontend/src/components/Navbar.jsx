@@ -156,7 +156,7 @@ export default function Navbar() {
                 </Link>
                 <button
                   onClick={logout}
-                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded text-red-600"
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded text-red-600 cursor-pointer"
                 >
                <FiLogOut />
                 </button>

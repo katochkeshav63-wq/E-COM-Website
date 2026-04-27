@@ -694,7 +694,7 @@ export default function Home() {
                 />
               </div>
               <button
-                className="btn-primary"
+                className="btn-primary cursor-pointer"
                 style={{ flexShrink: 0 }}
                 onClick={() => { alert("Subscribed!"); setEmail(""); }}
               >
