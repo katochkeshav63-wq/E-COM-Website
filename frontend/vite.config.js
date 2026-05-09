@@ -9,7 +9,7 @@ export default defineConfig({
   ],
   preview: {
     allowedHosts: [
-      'https://e-com-website-1-sswv.onrender.com'
+      'e-com-website-1-sswv.onrender.com'
     ]
   }
 })
