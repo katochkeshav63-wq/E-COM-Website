@@ -7,4 +7,9 @@ export default defineConfig({
   plugins: [react(),
       tailwindcss(),
   ],
+  preview: {
+    allowedHosts: [
+      'https://e-com-website-1-sswv.onrender.com'
+    ]
+  }
 })
